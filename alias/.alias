@@ -1,0 +1,76 @@
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+if command -v nvim > /dev/null 2>&1; then
+  alias vi="nvim"
+fi
+alias ta="tmux attach"
+alias cat="bat"
+alias cats="bat --paging=never"
+alias mc="mc --nosubshell"
+alias v="vi"
+alias vf="vifm"
+alias vic="cd ~/.config/nvim && vi"
+alias l="lsd"
+alias ll="lsd -l"
+alias la="lsd -al"
+alias ls="lsd"
+alias c="clear"
+alias ta="tmux attach"
+alias fzff="fzf --preview \"bat --color=always --style=numbers --line-range=:500 {}\""
+export FZF_DEFAULT_OPTS='--bind "ctrl-j:down,ctrl-k:up,ctrl-u:page-up,ctrl-n:page-down,alt-j:preview-down,alt-k:preview-up,alt-u:preview-page-up,alt-h:preview-page-down"'
+
+# git alias
+alias gci="git commit"
+alias gco="git checkout"
+alias ga="git add"
+alias gb="git branch"
+alias gba="git branch --all"
+alias gbd="git branch -D"
+alias gcp="git cherry-pick"
+alias gda="gd HEAD"
+alias gds="gd --staged"
+alias gf="git fetch"
+alias gloa="glo --author"
+alias grs="git restore --staged"
+alias gst="git rev-parse --git-dir > /dev/null 2>&1 && git status || lsd"
+alias gs="git stash"
+alias gsa="git stash apply"
+alias gp="git pull"
+alias gpush="git push"
+alias gu="git reset --soft HEAD~1"
+alias gpr="git remote prune origin"
+alias ff="gpr && git pull --ff-only"
+alias grd="git fetch origin && git rebase origin/master"
+alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(green)%an %ar %C(reset) %C(bold magenta)%d%C(reset)'"
+alias grc="git rebase --continue"
+alias gra="git rebase --abort"
+alias trim="awk '{\$1=\$1;print}'"
+alias r="reset"
+
+# color-ssh() {
+# 	trap "~/dotfiles/bin/colorterm.sh" INT EXIT
+#    ~/dotfiles/bin/colorTerm.sh $*
+#    ssh "$*"
+# }
+
+function color() {
+  black=#15191e
+  solarzied_dark=#0d2a34
+  green=#192b1f
+  blue=#000042
+  reddish=#300924
+  if [[ $1 == "black" ]]; then 
+    printf "\033]11;$black\007"
+  elif [[ $1 == "solarized" ]]; then
+    printf "\033]11;$solarzied_dark\007"
+  elif [[ $1 == "green" ]]; then
+    printf "\033]11;$green\007"
+  elif [[ $1 == "reddish" ]]; then
+    printf "\033]11;$reddish\007"
+  elif [[ $1 == "blue" ]]; then
+    printf "\033]11;$blue\007"
+  fi
+}
+
